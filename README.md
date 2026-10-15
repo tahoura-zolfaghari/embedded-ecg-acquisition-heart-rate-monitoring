@@ -1,4 +1,3 @@
-
 # Embedded ECG Acquisition and Heart Rate Monitoring System
 
 **Undergraduate Thesis | Islamic Azad University, Najafabad Branch | October 2026**
@@ -7,15 +6,30 @@
 
 ## Project Overview
 
-This project involved developing a low-cost, single-lead ECG acquisition and heart rate monitoring prototype using an Arduino microcontroller and the AD8232 bioelectric analog front-end.
+This project focuses on building a low-cost, single-lead ECG acquisition and heart rate monitoring prototype using an Arduino microcontroller and the AD8232 ECG analog front-end.
 
-## Key Contributions
+The system has two operating modes. Since continuous ECG plotting and periodic text reports use the same serial connection, separate Arduino sketches are used for each mode.
 
-- Designed a low-cost ECG acquisition prototype using Arduino and the AD8232 ECG front-end.
-- Implemented digital signal processing to address baseline wander, power-line interference, and noise.
-- Developed R-peak detection and RR-interval analysis for real-time heart rate estimation.
-- Integrated live ECG waveform visualization.
-- Investigated basic abnormal rhythm detection, including bradycardia, tachycardia, and irregular RR intervals, for potential wearable cardiac screening applications.
+## Operating Modes
+
+### 1. Real-Time ECG Plotter
+
+File: `ecg_realtime_plotter.ino`
+
+- Reads ECG samples from the AD8232 module.
+- Sends ECG values continuously over serial for real-time plotting.
+- Estimates heart rate using threshold-based beat detection.
+- Detects lead disconnection using the module's lead-off signals.
+
+### 2. Periodic ECG Reporting
+
+File: `ecg_periodic_reporting.ino`
+
+- Estimates heart rate from detected beats.
+- Calculates RR intervals and average BPM.
+- Tracks the signal range to provide a basic signal quality estimate.
+- Prints a status report every three seconds, including heart rate, lead status, and signal quality.
+- Activates an output alarm when the estimated heart rate is outside the configured range.
 
 ## Hardware
 
@@ -23,22 +37,18 @@ This project involved developing a low-cost, single-lead ECG acquisition and hea
 - AD8232 ECG analog front-end
 - ECG electrodes
 
-## Tools & Technologies
+## Tools and Technologies
 
 - Arduino IDE
 - Embedded C/C++
-- ECG Signal Processing
-- Real-Time Biomedical Signal Acquisition
-- Heart Rate Estimation
-
-## Demonstration
-
-Screenshots and a video demonstration of the system's real-time serial output will be provided here.
+- ECG signal acquisition
+- Serial data visualization
+- Basic signal analysis and heart rate estimation
 
 ## Project Scope and Limitations
 
-This project was developed as an undergraduate thesis prototype. The system is intended for educational and research purposes and is not a clinically validated diagnostic device.
+This project was developed as an undergraduate thesis prototype for educational and research purposes. The heart rate estimation and signal quality assessment are basic implementations and have not been clinically validated. The system is not intended for medical diagnosis.
 
 ## Confidentiality
 
-Only source code, images, and documentation authorized for public release are included in this repository. Restricted hardware design files are not shared.
+Only source code and documentation authorized for public release are included in this repository. Restricted hardware design files are not shared.
