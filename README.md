@@ -31,6 +31,20 @@ File: `ecg_periodic_reporting.ino`
 - Prints a status report every three seconds, including heart rate, lead status, and signal quality.
 - Activates an output alarm when the estimated heart rate is outside the configured range.
 
+## Demo Videos
+
+### 1. Real-Time ECG Plotter
+
+Demonstration of real-time ECG signal acquisition and heart rate estimation.
+
+[Watch the demonstration](ecg_realtime_plotter.mp4)
+
+### 2. Periodic ECG Reporting
+
+Demonstration of periodic ECG reports, including heart rate, lead status, and signal quality.
+
+[Watch the demonstration](ecg_periodic_reporting.mp4)
+
 ## Hardware
 
 - Arduino microcontroller
